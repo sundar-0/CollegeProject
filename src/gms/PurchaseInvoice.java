@@ -22,7 +22,8 @@ import net.proteanit.sql.DbUtils;
  *
  * @author Anonymous
  */
-public class PurchaseInvoice extends javax.swing.JFrame {
+public class PurchaseInvoice extends javax.swing.JFrame{
+  
 
     /**
      * Creates new form PurchaseInvoice
@@ -197,14 +198,13 @@ private void updateCart(Connection con) throws SQLException{
 }
 //Delete Data
 private void deleteData(Connection con) throws SQLException{
-       PreparedStatement pst = con.prepareStatement("Delete from purchaseinvoice where invoiceid=?");
+            PreparedStatement pst = con.prepareStatement("Delete from purchaseinvoice where invoiceid=?");
             pst.setString(1,jTextField6.getText());
             pst.executeUpdate();
             JOptionPane.showMessageDialog(null, "Deleted Successfully");
             clear();
             viewCart(con);
 }
-
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -339,15 +339,13 @@ private void deleteData(Connection con) throws SQLException{
                     .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addContainerGap())
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(20, 20, 20)
                         .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jButton2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jLabel11, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -390,7 +388,7 @@ private void deleteData(Connection con) throws SQLException{
                 .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 1604, Short.MAX_VALUE))
+                .addGap(0, 1612, Short.MAX_VALUE))
         );
 
         jButton4.setText("EDIT");
@@ -470,6 +468,11 @@ private void deleteData(Connection con) throws SQLException{
         );
 
         jButton8.setText("PRINT");
+        jButton8.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton8ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jInternalFrame1Layout = new javax.swing.GroupLayout(jInternalFrame1.getContentPane());
         jInternalFrame1.getContentPane().setLayout(jInternalFrame1Layout);
@@ -590,7 +593,7 @@ private void deleteData(Connection con) throws SQLException{
 
     private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseClicked
         // TODO add your handling code here:
-          JTable source = (JTable)evt.getSource();
+            JTable source = (JTable)evt.getSource();
             int row = source.rowAtPoint( evt.getPoint() );
             int column = source.columnAtPoint( evt.getPoint() );  
             String s=source.getModel().getValueAt(row, column)+""; 
@@ -630,6 +633,23 @@ private void deleteData(Connection con) throws SQLException{
             Logger.getLogger(PurchaseInvoice.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_jButton6ActionPerformed
+
+
+//
+    private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
+        // TODO add your handling code here:
+        CreateReportPDF j;
+        int id=Integer.parseInt(jTextField6.getText());
+        String supplierName=jComboBox1.getSelectedItem().toString();
+        String productName=jTextField2.getText();
+        float perunitprice=Float.parseFloat(jTextField3.getText());
+        int quantity=Integer.parseInt(jTextField4.getText());
+        float total=Float.parseFloat(jLabel7.getText());
+        
+        j = new CreateReportPDF(supplierName,productName,id,quantity,perunitprice,total);
+
+       
+    }//GEN-LAST:event_jButton8ActionPerformed
 
     /**
      * @param args the command line arguments

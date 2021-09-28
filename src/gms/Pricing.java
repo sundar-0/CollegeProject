@@ -176,7 +176,7 @@ public class Pricing extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
         dashboard d;
-        d=new dashboard();
+        d=new dashboard(dashboard.hashmap.get("username"),dashboard.hashmap.get("role"));
         d.setVisible(true);
         dispose();
     }//GEN-LAST:event_jButton1ActionPerformed

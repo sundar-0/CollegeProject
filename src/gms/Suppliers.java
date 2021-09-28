@@ -18,6 +18,7 @@ import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 import net.proteanit.sql.DbUtils;
 
+
 /**
  *
  * @author Anonymous
@@ -27,6 +28,7 @@ public class Suppliers extends javax.swing.JFrame {
     /**
      * Creates new form Suppliers
      */
+    
     public Suppliers() {
         initComponents();
         Connection con=dbConnection();
@@ -466,7 +468,7 @@ private void fetchData(String s,Connection con) throws SQLException{
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
         dashboard d;
-        d=new dashboard();
+        d=new dashboard(dashboard.hashmap.get("username"),dashboard.hashmap.get("role"));
         d.setVisible(true);
         dispose();
     }//GEN-LAST:event_jButton1ActionPerformed

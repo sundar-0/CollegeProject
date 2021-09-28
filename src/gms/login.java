@@ -13,20 +13,24 @@ import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
+import java.util.HashMap;
 
 /**
  *
  * @author Anonymous
  */
 public class login extends javax.swing.JFrame {
+    
+
+   public final HashMap<String, String> hashmap = new HashMap<String, String>();
+    //private constructor to avoid client applications to use constructor
+    public login(){
+    initComponents();
+    }
 
     /**
      * Creates new form login
      */
-    public login() {
-        initComponents();
-    }
-
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -125,6 +129,8 @@ public class login extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
         String Role=jComboBox1.getSelectedItem().toString();
+        String username=jTextField1.getText();
+        String password=jPasswordField1.getText();
         if(Role.equals("admin"))
         {
               try {  
@@ -132,16 +138,19 @@ public class login extends javax.swing.JFrame {
                     Connection con;
                     con = DriverManager.getConnection("jdbc:mysql://localhost:3306/gms","root","");
                     PreparedStatement pst = con.prepareStatement("select count(*) as rowcount from admin where admin_name=? and password=?");
-                    pst.setString(1,jTextField1.getText());
-                    pst.setString(2,jPasswordField1.getText());
+                    pst.setString(1,username);
+                    pst.setString(2,password);
                     ResultSet rs= pst.executeQuery();
                     rs.next();
                     int count = rs.getInt("rowcount") ;
                     rs.close() ;
                     if(count>0)
                     {
-                        JOptionPane.showMessageDialog(null, "Logined Successfully");
-                         dashboard d=new dashboard();
+             
+                         JOptionPane.showMessageDialog(null, "Logined Successfully"); 
+                          this.hashmap.put("username", username);
+                          this.hashmap.put("role", Role);
+                         dashboard d=new dashboard(username,"Admin");
                          d.setVisible(true);
                         dispose();
                     
@@ -161,16 +170,19 @@ public class login extends javax.swing.JFrame {
             Connection con;
                 con = DriverManager.getConnection("jdbc:mysql://localhost:3306/gms","root","");
                     PreparedStatement pst = con.prepareStatement("select count(*) as rowcount from staff where staff_name=? and staff_password=?");
-                    pst.setString(1,jTextField1.getText());
-                    pst.setString(2,jPasswordField1.getText());
+                    pst.setString(1,username);
+                    pst.setString(2,password);
                     ResultSet rs= pst.executeQuery();
                     rs.next();
                     int count = rs.getInt("rowcount") ;
                     rs.close() ;
                     if(count>0)
                     {
-                        JOptionPane.showMessageDialog(null, "Logined Successfully");
-                         dashboard d=new dashboard();
+                         JOptionPane.showMessageDialog(null, "Logined Successfully");
+                         
+                         this.hashmap.put("username", username);
+                         this.hashmap.put("role", Role);
+                         dashboard d=new dashboard(username,"Staff");
                          d.setVisible(true);
                         dispose();
                     

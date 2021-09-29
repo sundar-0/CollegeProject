@@ -45,7 +45,7 @@ public class Stocks extends javax.swing.JFrame {
                     con = DriverManager.getConnection("jdbc:mysql://localhost:3306/gms","root","");
          } catch (ClassNotFoundException | SQLException ex) {
              Logger.getLogger(Stocks.class.getName()).log(Level.SEVERE, null, ex);
-    }
+        }
          return con;
     }
       private void initCustom(Connection con) throws SQLException{

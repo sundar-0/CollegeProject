@@ -8,6 +8,7 @@ package gms;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.sql.SQLException;
 import java.util.HashMap;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -230,6 +231,11 @@ public class dashboard extends javax.swing.JFrame {
 
         jButton11.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         jButton11.setText("Generate Report");
+        jButton11.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton11ActionPerformed(evt);
+            }
+        });
 
         jButton12.setFont(new java.awt.Font("Vivaldi", 1, 18)); // NOI18N
         jButton12.setText("Logout");
@@ -287,7 +293,7 @@ public class dashboard extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jInternalFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jButton12, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 60, Short.MAX_VALUE)
+                    .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 64, Short.MAX_VALUE)
                     .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jInternalFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -417,6 +423,15 @@ public class dashboard extends javax.swing.JFrame {
             Logger.getLogger(dashboard.class.getName()).log(Level.SEVERE, null, ex);
         }       
     }//GEN-LAST:event_jButton13ActionPerformed
+
+    private void jButton11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton11ActionPerformed
+        try {
+            // TODO add your handling code here:
+            Chart c=new Chart();
+        } catch (SQLException | IOException ex) {
+            Logger.getLogger(dashboard.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_jButton11ActionPerformed
 
     /**
      * @param args the command line arguments

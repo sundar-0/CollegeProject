@@ -4,10 +4,10 @@
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
             <file>file:/E:/CollegeProject/src/gms/Pricing.java</file>
-            <file>file:/E:/CollegeProject/src/gms/login.java</file>
+            <file>file:/E:/CollegeProject/src/gms/Staff.java</file>
             <file>file:/E:/CollegeProject/src/gms/dashboard.java</file>
-            <file>file:/E:/CollegeProject/src/gms/Stocks.java</file>
-            <file>file:/E:/CollegeProject/src/gms/BackupData.java</file>
+            <file>file:/E:/CollegeProject/src/gms/Chart.java</file>
+            <file>file:/E:/CollegeProject/src/gms/customers.java</file>
         </group>
     </open-files>
 </project-private>
